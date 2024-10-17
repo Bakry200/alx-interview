@@ -3,21 +3,18 @@ def minOperations(n):
         return 0
 
     operations = 0
-    current_length = 1
-    buffer = 0
+    factor = 2
 
-    while current_length < n:
-        if n % current_length == 0:
-            buffer = current_length
-            operations += 1  # Copy All
-        current_length += buffer
-        operations += 1  # Paste
+    while n > 1:
+        while n % factor == 0:
+            operations += factor
+            n //= factor
+        factor += 1
 
     return operations
 
-# Example usage
-if __name__ == "__main__":
-    n = 4
-    print("Min number of operations to reach {} char: {}".format(n, minOperations(n)))
-    n = 12
-    print("Min number of operations to reach {} char: {}".format(n, minOperations(n)))
+# Example testing cases
+if _name_ == "_main_":
+    print("Min number of operations to reach {} characters: {}".format(4, minOperations(4)))
+    print("Min number of operations to reach {} characters: {}".format(12, minOperations(12)))
+    print("Min number of operations to reach {} characters: {}".format(9, minOperations(9)))
